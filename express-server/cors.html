@@ -1,0 +1,16 @@
+<head>
+  <body>
+    <script>
+      fetch('http://localhost:3000/login', {
+        method : 'post',
+        headers : {
+          'Content-type' : 'application/json',
+        },
+        body : JSON.stringify({ id : "Hong", pwd : "a1234" }),
+      })
+      .then(res => res.json())
+      .then(result => console.log(result))
+      .catch(err => console.log(err));
+    </script>
+  </body>
+</head>
