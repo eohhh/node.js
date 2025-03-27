@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 단건 -->
+   <form name="singleForm">
+    <input type="file" name="avatar"> <!-- single의 name은 multerApp.js 에서 정의한 avatar -->
+    <button type="button">단건 등록</button>
+   </form>
+   <script>
+      singleForm.querySelector('button').addEventListener('click', function(event) {
+      // multipart/form-data
+      let formData = new FormData(singleForm);
+
+      fetch('http://localhost:5000/profile', {
+        method : 'post',
+        body : formData,
+      })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => console.log(err));
+    });
+   </script>
+
+
+   <!-- multiple => form 태그 있을경우 -->
+    <!-- <form name="multipleForm">
+      <input type="file" name="photos" multiple>
+      <button type="button">다중 등록</button>
+    </form>
+    <script>
+      multipleForm.querySelector('button').addEventListener('click', function(event) {
+        let formData = new FormData(multipleForm);
+        
+        fetch('http://localhost:5000/photos', { 
+          method:'post',
+          body : formData,
+        })
+        .then(res => res.json())
+        .then(result => {
+          console.log(result);
+        })
+        .catch(err => console.log(err));
+      }); -->
+    <!-- </script> -->
+
+
+
+
+    <!-- 멀티 등록 : form태그는 경우.-->
+  <input type="file" name="photos" multiple>
+  <button type="button" id="upBtn">다중 등록</button>
+
+<script>
+        document.querySelector('#upBtn').addEventListener('click', function (e) {
+            let inputTag = e.currentTarget.previousElementSibling;
+            let fileList = inputTag.files;
+            let formData = new FormData(); // form을 안쓰는 대신에 하나씩 불러옴.
+            for (let file of fileList) {
+                formData.append('photos', file);
+            }
+            fetch('http://localhost:5000/photos', {
+                method: 'post',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(err => console.log(err));
+        });
+</script>
+</body>
+
+</html>
