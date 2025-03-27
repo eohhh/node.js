@@ -2,6 +2,7 @@
 // mapper/mapper.js 
 const mariaDB = require('mariadb/callback');
 const sqlList = require('./sql/customers.js');
+
 const connectionPool = mariaDB.createPool({
   // 필수 // DB에 접속하기 위한 정보.
 host : process.env.DB_HOST,
@@ -19,7 +20,7 @@ bigIntAsNumber : true,
 
 let testSql = `SELECT * FROM customers`;
 
-const query = (alias, values) => { 
+const query = (alias, values) => {
   return new Promise((resolve, reject) => {
     let executeSql = sqlList[alias]; // sqlList['selectAll']
     console.log(`sql : ${executeSql}`);
