@@ -14,8 +14,10 @@ router.get('/customers', async(req, res) => { // async => 비동기를 동기방
 });
 
 // 단건조회 : GET + '/customers/:id'
-router.get('/customers/:id', (req, res) => {
-  
+router.get('/customers/:id', async (req, res) => {
+  let custId = req.params.id;
+  let custInfo = await custService.findById(custId);
+  res.send(custInfo);
 });
 
 // 등록 : POST + '/customers' + JSON

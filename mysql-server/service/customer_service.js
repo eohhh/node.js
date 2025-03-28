@@ -10,7 +10,10 @@ const findAll = async () => {
 };
 
 // 단건조회
-const findById = () => {};
+const findById = async (custId) => { // (custId) 사용자가 선택해서 넘겨줘야함 (1,2...)
+  let info = (await mariaDB.query('selectById', custId))[0]; // 단건조회는 배열로 값을 주기 때문에 [0]으로 처리해준다.
+  return info;
+};
 
 // 등록
 const addCustomer = () => {};
