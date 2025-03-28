@@ -16,6 +16,10 @@ connectionLimit : process.env.DB_LIMIT,
 permitSetMultiParamEntries : true,
 insertIdAsNumber : true,
 bigIntAsNumber : true,
+logger : {
+  query : (msg) => console.log(msg),
+  error : (err) => console.log(err), // error뜨면 알아서 console.log
+  }
 });
 
 let testSql = `SELECT * FROM customers`;
@@ -23,7 +27,7 @@ let testSql = `SELECT * FROM customers`;
 const query = (alias, values) => {
   return new Promise((resolve, reject) => {
     let executeSql = sqlList[alias]; // sqlList['selectAll']
-    console.log(`sql : ${executeSql}`);
+    // console.log(`sql : ${executeSql}`);
     connectionPool.query(executeSql, values, (err, result) => {
       if(err) {
         reject({err});  
