@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 package-lock.json
 # Created by https://www.toptal.com/developers/gitignore/api/windows,node,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,node,visualstudiocode
@@ -79,7 +79,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
+*.env
 .env.development.local
 .env.test.local
 .env.production.local
