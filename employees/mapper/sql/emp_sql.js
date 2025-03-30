@@ -24,7 +24,23 @@ const selectById =
         ,ip_addpress
 WHERE id = ?`;
 
+const insertInfo = 
+`INSERT INTO employees (first_name, last_name, eamil, ip_address)
+VALUES (?,?,?,?)`;
+
+const updateInfo =
+`UPDATE employees
+SET ?
+WHERE id = ?`;
+
+const deleteInfo =
+`DELETER employees
+FROM id = ?`; 
+
 module.exports = {
   selectAll,
   selectById,
+  updateInfo,
+  insertInfo,
+  deleteInfo,
 }
