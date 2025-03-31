@@ -1,5 +1,5 @@
 // app.js
- // require('dotenv').config{path : './mapper/dbConfig.env'};
+require('dotenv').config({path : './mapper/dbConfig.env'});
 // 모듈생성
 const express = require('express');
 const app = express();

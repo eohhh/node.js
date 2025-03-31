@@ -6,7 +6,13 @@ const connectionPool = mariaDB.createPool ({
 host : process.env.DB_HOST,
 port : process.env.DB_PORT,
 password : process.env.DB_PWD,
-user : process.env.DB_USER
+user : process.env.DB_USER,
+database : process.env.DB_DATABASE,
+connectionLimit : process.env.DB_LIMIT,
+// 선택이지만 권장사항.
+permitSetMultiParamEntries : true,
+insertIdAsNumber : true,
+bigIntAsNumber : true,
 });
 
 const query = (alias, values) => {
@@ -16,10 +22,10 @@ const query = (alias, values) => {
       if(err) {
         reject({err});
       } else {
-        resolve({result});
+        resolve(result);
       }
     });
-  })
+  }) 
   .catch(err => {
     console.log(err);
     return err;

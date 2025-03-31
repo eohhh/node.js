@@ -21,7 +21,8 @@ const selectById =
         ,last_name
         ,email
         ,gender
-        ,ip_addpress
+        ,ip_address
+FROM employees
 WHERE id = ?`;
 
 const insertInfo = 

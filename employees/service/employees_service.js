@@ -10,6 +10,8 @@ const findAll = async () => {
 // 단건조회
 const findById = async(empId) => {
     let info = (await mariaDB.query('selectById', empId))[0]
+    console.log(empId);
+    console.log(info)
     return info;
 };
 
@@ -27,7 +29,6 @@ const converterAray = (target, list) => {
     for(let field of list) {
         let val = target[field];
         aray.push(val);
-
     }
     return aray;
 }

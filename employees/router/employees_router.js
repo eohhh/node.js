@@ -6,13 +6,14 @@ const empService = require('../service/employees_service.js');
 // 전체조회
 router.get('/employees', async(req, res) => {
     let empList = await empService.findAll();
-    res.send(custList);
+    res.send(empList);
 });
 
 // 단건조회
 router.get('/employees/:id', async (req, res) => {
     let empId = req.params.id;
     let empInfo = await empService.findById(empId);
+    console.log(empInfo);
     res.send(empInfo);
 });
 
