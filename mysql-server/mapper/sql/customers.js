@@ -14,6 +14,7 @@
 
 */ 
 
+// 전체조회
 const selectAll = 
 `SELECT id
 		     ,name
@@ -23,6 +24,7 @@ const selectAll =
 FROM customers
 ORDER BY id`;
 
+// 단건조회
 const selectById = 
 `SELECT id
         ,name
@@ -32,6 +34,7 @@ const selectById =
 FROM customers
 WHERE id = ?`;
 
+// 등록
 const insertInfo = 
 `INSERT INTO customers (name, email, phone, address)
  VALUES (?,?,?,?)`; // 배열로 넘겨줘야함 // connectionPool.query(executeSql, values, (err, result)에서  values값을 배열로 넘겨줌.
@@ -39,11 +42,14 @@ const insertInfo =
 
  // {name : 'H', address:'daegu'}
  // SET name = 'H', address = 'daegu'
+
+ // 수정
 const updateInfo = 
 `UPDATE customers
 SET ? 
 WHERE id = ?`; // 배열이면서 배열[ 객체, 단일값 ]이 필요함 => SET에 무엇이 들어갈지 모르니까..   // ?가 2개여서 배열이 필요함 값을 2개 가지는
 
+// 삭제
 const deleteInfo = 
 `DELETE FROM customers
 WHERE id = ?`;
